@@ -1,0 +1,12 @@
+#!/bin/bash -login
+#PBS -l walltime=10:00:00,nodes=1:ppn=1,mem=20g
+#PBS -q main
+#PBS -M qingpeng@gmail.com
+#PBS -m abe
+#PBS -A ged-intel11
+
+module load khmer
+module load screed
+
+cd $PBS_O_WORKDIR
+python /mnt/home/qingpeng/bin/khmer/scripts/load-into-counting.py --ksize ${ksize} --n_hashes ${n_hashes} --hashsize ${hashsize} ${htfile} ${seqfile}

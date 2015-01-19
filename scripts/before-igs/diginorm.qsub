@@ -1,0 +1,15 @@
+#!/bin/bash -login
+#PBS -l walltime=50:00:00,nodes=1:ppn=4,mem=150g
+#PBS -q main
+#PBS -M qingpeng@gmail.com
+#PBS -m abe
+#PBS -A ged-intel11
+
+module load khmer/1.0.1-rc2
+module load screed
+
+cd $PBS_O_WORKDIR
+
+python /opt/software/khmer/1.0.1-rc2--GCC-4.4.5/scripts/normalize-by-median.py --ksize 20 --n_tables 4 --min-tablesize 35e9 -C 5 iowa_corn.trimmed.fasta.gz 
+
+
