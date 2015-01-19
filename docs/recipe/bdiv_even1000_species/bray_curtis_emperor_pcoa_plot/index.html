@@ -1,0 +1,249 @@
+<!--
+*Summary of Emperor's Information*
+Command executed on November 11, 2014 at 21:57:48
+Emperor Version: 0.9.1
+QIIME Version: 1.7.0-dev
+HostName: dev-intel10
+Metadata: /mnt/home/qingpeng/Dropbox/Manuscript/khmer-recipes/008-diversity_IGS/all_sample_MAP.txt
+Coordinates: /mnt/home/qingpeng/Dropbox/Manuscript/khmer-recipes/008-diversity_IGS/bdiv_even1000_species/bray_curtis_pc.txt
+Command: /opt/software/emperor/0.9.1--GCC-4.4.5/bin/make_emperor.py -i bdiv_even1000_species/bray_curtis_pc.txt -o bdiv_even1000_species/bray_curtis_emperor_pcoa_plot/ -m all_sample_MAP.txt
+-->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Emperor</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="emperor_required_resources/img/favicon.ico" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/emperor/css/emperor.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/jquery-ui2.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/colorPicker.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/spectrum.css">
+    <link rel="stylesheet" type="text/css" href="emperor_required_resources/css/d3.parcoords.css">
+    <table id="logotable" style="vertical-align:middle;text-align:center;height:100%;width:100%;margin:0;padding:0;border:0;">
+        <tr><td><img src="emperor_required_resources/img/emperor.png" alt="Emperor" id="logo"/></td></tr>
+    </table>
+    <script type="text/javascript" src="emperor_required_resources/js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/d3.parcoords.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/jquery-ui-1.8.17.custom.min.js"></script>
+    <script src="emperor_required_resources/js/jquery.colorPicker.js"></script>
+    <script src="emperor_required_resources/js/spectrum.js"></script>
+
+    <script src="emperor_required_resources/js/Three.js"></script>
+    <script src="emperor_required_resources/js/js/Detector.js"></script>
+    <script src="emperor_required_resources/js/js/RequestAnimationFrame.js"></script>
+    <script src="emperor_required_resources/emperor/js/emperor.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/THREEx.screenshot.js"></script>
+    <script type="text/javascript" src="emperor_required_resources/js/FileSaver.min.js"></script>
+    
+    <script type="text/javascript">
+    
+var g_mappingFileHeaders = ['SampleID','BarcodeSequence','LinkerPrimerSequence'];
+var g_mappingFileData = { 'sample5': ['sample5','A','A'],'sample4': ['sample4','A','A'],'sample6': ['sample6','A','A'],'sample1': ['sample1','A','A'],'sample3': ['sample3','A','A'],'sample2': ['sample2','A','A'] };
+
+var g_spherePositions = new Array();
+g_spherePositions['sample1'] = { 'name': 'sample1', 'color': 0, 'x': -0.253423, 'y': 0.307931, 'z': 0.000000, 'P1': -0.253423, 'P2': 0.307931, 'P3': 0.000000, 'P4': 0.034675 };
+g_spherePositions['sample2'] = { 'name': 'sample2', 'color': 0, 'x': -0.308810, 'y': 0.050538, 'z': -0.000000, 'P1': -0.308810, 'P2': 0.050538, 'P3': -0.000000, 'P4': -0.059493 };
+g_spherePositions['sample3'] = { 'name': 'sample3', 'color': 0, 'x': -0.284108, 'y': -0.175400, 'z': -0.125000, 'P1': -0.284108, 'P2': -0.175400, 'P3': -0.125000, 'P4': 0.020428 };
+g_spherePositions['sample4'] = { 'name': 'sample4', 'color': 0, 'x': -0.284108, 'y': -0.175400, 'z': 0.125000, 'P1': -0.284108, 'P2': -0.175400, 'P3': 0.125000, 'P4': 0.020428 };
+g_spherePositions['sample5'] = { 'name': 'sample5', 'color': 0, 'x': 0.436669, 'y': 0.002730, 'z': 0.000000, 'P1': 0.436669, 'P2': 0.002730, 'P3': 0.000000, 'P4': -0.051149 };
+g_spherePositions['sample6'] = { 'name': 'sample6', 'color': 0, 'x': 0.693781, 'y': -0.010398, 'z': 0.000000, 'P1': 0.693781, 'P2': -0.010398, 'P3': 0.000000, 'P4': 0.035109 };
+
+var g_ellipsesDimensions = new Array();
+var g_segments = 8, g_rings = 8, g_radius = 0.012031;
+var g_xAxisLength = 1.002591;
+var g_yAxisLength = 0.483331;
+var g_zAxisLength = 0.250000;
+var g_xMaximumValue = 0.693781;
+var g_yMaximumValue = 0.307931;
+var g_zMaximumValue = 0.125000;
+var g_xMinimumValue = -0.308810;
+var g_yMinimumValue = -0.175400;
+var g_zMinimumValue = -0.125000;
+var g_maximum = 0.693781;
+var g_pc1Label = "PC1 (83 %)";
+var g_pc2Label = "PC2 (13 %)";
+var g_pc3Label = "PC3 (3 %)";
+var g_number_of_custom_axes = 0;
+var g_fractionExplained = [0.830341, 0.132969, 0.026130, 0.007881];
+var g_fractionExplainedRounded = [83, 13, 3, 1];
+
+var g_taxaPositions = new Array();
+
+
+var g_vectorPositions = new Array();
+
+var g_comparisonPositions = new Array();
+var g_isSerialComparisonPlot = true;
+document.getElementById("logo").style.display = 'none';
+document.getElementById("logotable").style.display = 'none';
+
+ </script>
+</head>
+
+<body>
+
+<div id="overlay">
+	<div>
+	<img src="emperor_required_resources/img/emperor.png" alt="Emperor" id="smalllogo"/>
+		<h1>WebGL is not enabled!</h1>
+		<p>Emperor's visualization framework is WebGL based, it seems that your system doesn't have this resource available. Here is what you can do:</p>
+		<p id="explanation"><strong>Chrome:</strong> Type "chrome://flags/" into the address bar, then search for "Disable WebGL". Disable this option if you haven't already. <em>Note:</em> If you follow these steps and still don't see an image, go to "chrome://flags/" and then search for "Override software rendering list" and enable this option.</p>
+		<p id="explanation"><strong>Safari:</strong> Open Safari's menu and select Preferences. Click on the advanced tab, and then check "Show Developer" menu. Then open the "Developer" menu and select "Enable WebGL".</p>
+		<p id="explanation"><strong>Firefox:</strong> Go to Options through Firefox > Options or Tools > Options. Go to Advanced, then General. Check "Use hardware acceleration when available" and restart Firefox.</p>
+		<p id="explanation"><strong>Other browsers:</strong> The only browsers that support WebGL are Chrome, Safari, and Firefox. Please switch to these browsers when using Emperor.</p>
+		<p id="explanation"><em>Note:</em> Once you went through these changes, reload the page and it should work!</p>
+		<p id="source">Sources: Instructions for <a href="https://www.biodigitalhuman.com/home/enabling-webgl.html">Chrome and Safari</a>, and <a href="http://www.infewbytes.com/?p=144">Firefox</a></p>
+	</div>
+</div>
+
+<div id="plotToggle">
+    <form>
+      <div id="plottype">
+        <input id="pcoa" type="radio" id="pcoa" name="plottype" checked="checked" /><label for="pcoa">PCoA</label>
+        <input id="parallel" type="radio" id="parallel" name="plottype" /><label for="parallel">Parallel</label>
+      </div>
+    </form>
+</div>
+<div id="pcoaPlotWrapper" class="plotWrapper">
+    <label id="pointCount" class="ontop">
+    </label>
+
+    <div id="finder" class="arrow-right">
+    </div>
+
+    <div id="labels" class="unselectable">
+    </div>
+
+    <div id="taxalabels" class="unselectable">
+    </div>
+
+    <div id="axislabels" class="axislabels">
+    </div>
+
+    <div id="main_plot">
+    </div>
+</div>
+
+<div id="parallelPlotWrapper" class="plotWrapper">
+</div>
+
+<div class="separator" ondblclick="separatorDoubleClick()"></div>
+
+<div id="menu">
+    <div id="menutabs">
+        <ul>
+            <li><a href="#keytab">Key</a></li>
+            <li><a href="#colorby">Colors</a></li>
+            <li><a href="#showby">Visibility</a></li>
+            <li><a href="#scalingby">Scaling</a></li>
+            <li><a href="#labelby">Labels</a></li>
+            <li><a href="#axes">Axes</a></li>
+            <li><a href="#view">View</a></li>
+            <li><a href="#settings">Options</a></li>
+        </ul>
+        <div id="keytab">
+            <form name="keyFilter">
+            <label>Filter  </label><input name="filterBox" id="searchBox" type="text" onkeyup="filterKey()"></input>
+            </form>
+            <div id="key">
+            </div>
+        </div>
+        <div id="colorby">
+            <br>
+            <select id="colorbycombo" onchange="colorByMenuChanged()" size="3">
+            </select>
+            <div class="list" id="colorbylist">
+            </div>
+        </div>
+        <div id="showby">
+            <select id="showbycombo" onchange="showByMenuChanged()">
+            </select>
+            <div class="list" id="showbylist">
+            </div>
+        </div>
+        <div id="scalingby">
+            <select id="scalingbycombo" onchange="scalingByMenuChanged()">
+            </select>
+            <div class="list" id="scalingbylist">
+            </div>
+        </div>
+        <div id="labelby">
+        <div id="labelsTop">
+            <form name="plotoptions">
+            <input type="checkbox" onClick="toggleLabels()">Samples Label Visibility</input>
+            </form>
+            <br>
+            <label for="labelopacity" class="text">Label Opacity</label>
+            <label id="labelopacity" class="slidervalue"></label>
+            <div id="lopacityslider" class="slider-range-max"></div>
+            <div id="labelColorHolder clearfix">
+            <table>
+                <tr><td><div id="labelColor" class="colorbox"></div></td><td><label>Master Label Color</label></td></tr>
+            </table></div>
+        </div>
+            <br>
+            <select id="labelcombo" onchange="labelMenuChanged()">
+            </select>
+            <div class="list" id="labellist">
+            </div>
+        </div>
+        <div id="axes">
+            <div id="pcoaaxes">
+                <div class="list" id="axeslist">
+                </div>
+            </div>
+        </div>
+        <div id="view">
+            <table>
+                <tr><td><div id="axeslabelscolor" class="colorbox" name="axeslabelscolor"></div></td><td title="Axes Labels Color">Axes Labels Color</td></tr>
+                <tr><td><div id="axescolor" class="colorbox" name="axescolor"></div></td><td title="Axes Color Title">Axes Color</td></tr>
+                <tr><td><div id="rendererbackgroundcolor" class="colorbox" name="rendererbackgroundcolor"></div></td><td title="Background Color Title">Background Color</td></tr>
+            </table>
+            <div id="pcoaviewoptions" class="">
+                <br>
+                <input id="reset" class="button" type="submit" value="Recenter Camera" style="" onClick="resetCamera()">
+                <br>
+                <br>
+                <form name="settingsoptionscolor">
+                <input type="checkbox" onchange="toggleContinuousAndDiscreteColors(this)" id="discreteorcontinuouscolors" name="discreteorcontinuouscolors">  Use gradient colors</input>
+                </form>
+                <br>
+                <label for="sphereopacity" class="text">Sphere Opacity</label>
+                <label id="sphereopacity" class="slidervalue"></label>
+                <div id="sopacityslider" class="slider-range-max"></div>
+                <br>
+                <label for="sphereradius" class="text">Sphere Scale</label>
+                <label id="sphereradius" class="slidervalue"></label>
+                <div id="sradiusslider" class="slider-range-max"></div>
+                <br>
+            </div>
+            <br>
+        </div>
+        <div id="settings">
+            <br>
+            Filename <small>(only letters, numbers, ., - and _)</small>:
+            <br>
+            <input name="saveas_name" id="saveas_name" value="screenshot" type="text"/>
+            <input id="saveas" class="button" type="submit" value="Save as SVG" style="" onClick="saveSVG()"/>
+            <br>
+            Create labels? <input id="saveas_legends" class="checkbox" type="checkbox" style="">
+            <br><br>
+            For a PNG, simply press 'ctrl+p'.
+            <br><br>
+            <div id="pcoaoptions" class="">
+                <form name="settingsoptions">
+                    <input type="checkbox" onchange="toggleScaleCoordinates(this)" id="scale_checkbox" name="scale_checkbox">Scale coords by percent explained</input>
+                </form>
+            </div>
+            <br>
+            <div id="paralleloptions" class="">
+            </div>
+        </div>
+    </div>  
+</div>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+Logging started at 17:26:22 on 16 Oct 2014
+QIIME version: 1.7.0-dev
+
+qiime_config values:
+blastmat_dir	/opt/software/BLAST/2.2.25--GCC-4.4.5/data
+sc_queue	all.q
+cluster_jobs_fp	/opt/software/QIIME/1.4.0--GCC-4.4.5/lib/python2.7/site-packages/qiime/scripts/start_parallel_jobs_torque.py
+torque_queue	main
+jobs_to_start	100
+cloud_environment	False
+qiime_scripts_dir	/opt/software/QIIME/1.7.0--GCC-4.4.5/bin
+denoiser_min_per_core	50
+working_dir	/mnt/home/qingpeng/Dropbox/Manuscript/khmer-recipes/101-alpha-diversity/
+python_exe_fp	python
+temp_dir	/tmp/
+blastall_fp	blastall
+seconds_to_sleep	60
+
+parameter file values:
+alpha_diversity:metrics	chao1,observed_species
+parallel:jobs_to_start	100
+
+Input file md5 sums:
+all_sample.spectrum.IGS.alpha.biom: a6825d95be5c3e56434237450e08a547
+all_sample_MAP.txt: 9e76256a0099d68b596b6f0ac3a2e4b0
+
+Executing commands.
+
+# Alpha rarefaction command 
+python /opt/software/QIIME/1.7.0--GCC-4.4.5/bin/multiple_rarefactions.py -i all_sample.spectrum.IGS.alpha.biom -m 10 -x 3961 -s 395 -o wf_arare//rarefaction/ 
+
+Stdout:
+
+Stderr:
+
+# Alpha diversity on rarefied OTU tables command 
+python /opt/software/QIIME/1.7.0--GCC-4.4.5/bin/alpha_diversity.py -i wf_arare//rarefaction/ -o wf_arare//alpha_div/ --metrics chao1,observed_species
+
+Stdout:
+
+Stderr:
+
+# Collate alpha command 
+python /opt/software/QIIME/1.7.0--GCC-4.4.5/bin/collate_alpha.py -i wf_arare//alpha_div/ -o wf_arare//alpha_div_collated/ 
+
+Stdout:
+
+Stderr:
+
+# Removing intermediate files command 
+rm -r wf_arare//rarefaction/ wf_arare//alpha_div/
+
+Stdout:
+
+Stderr:
+
+# Rarefaction plot: All metrics command 
+python /opt/software/QIIME/1.7.0--GCC-4.4.5/bin/make_rarefaction_plots.py -i wf_arare//alpha_div_collated/ -m all_sample_MAP.txt -o wf_arare//alpha_rarefaction_plots/ 
+
+Stdout:
+
+Stderr:
+
+
+Logging stopped at 17:29:27 on 16 Oct 2014

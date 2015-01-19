@@ -1,0 +1,46 @@
+Logging started at 21:51:31 on 11 Nov 2014
+QIIME version: 1.4.0
+
+qiime_config values:
+blastmat_dir	/opt/software/BLAST/2.2.25--GCC-4.4.5/data
+cluster_jobs_fp	/opt/software/QIIME/1.4.0--GCC-4.4.5/lib/python2.7/site-packages/qiime/scripts/start_parallel_jobs_torque.py
+torque_queue	main
+jobs_to_start	100
+cloud_environment	False
+qiime_scripts_dir	/opt/software/QIIME/1.7.0--GCC-4.4.5/bin
+denoiser_min_per_core	50
+working_dir	/mnt/home/qingpeng/Dropbox/Manuscript/khmer-recipes/101-alpha-diversity/
+python_exe_fp	python
+temp_dir	/tmp/
+blastall_fp	blastall
+seconds_to_sleep	60
+
+parameter file values:
+beta_diversity:metrics	bray_curtis
+parallel:jobs_to_start	100
+
+Input file md5 sums:
+all_sample.spectrum.species.biom: 5a594334d71680affe45c5ce8fcb6d4d
+all_sample_MAP.txt: 9e76256a0099d68b596b6f0ac3a2e4b0
+
+Executing commands.
+
+# Sample OTU table at 4000 seqs/sample command 
+python /opt/software/QIIME/1.7.0--GCC-4.4.5/bin/single_rarefaction.py -i all_sample.spectrum.species.biom -o bdiv_even1000_species//all_sample.spectrum.species_even4000.biom -d 4000
+
+
+
+*** ERROR RAISED DURING STEP: Sample OTU table at 4000 seqs/sample
+Command run was:
+ python /opt/software/QIIME/1.7.0--GCC-4.4.5/bin/single_rarefaction.py -i all_sample.spectrum.species.biom -o bdiv_even1000_species//all_sample.spectrum.species_even4000.biom -d 4000
+Command returned exit status: 1
+Stdout:
+
+Stderr
+Traceback (most recent call last):
+  File "/opt/software/QIIME/1.7.0--GCC-4.4.5/bin/single_rarefaction.py", line 14, in <module>
+    from cogent.maths.stats.rarefaction import subsample, subsample_multinomial
+ImportError: cannot import name subsample_multinomial
+
+
+Logging stopped at 21:51:31 on 11 Nov 2014

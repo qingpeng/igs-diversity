@@ -1,0 +1,93 @@
+Logging started at 16:59:25 on 16 Oct 2014
+QIIME version: 1.7.0-dev
+
+qiime_config values:
+blastmat_dir	/opt/software/BLAST/2.2.25--GCC-4.4.5/data
+sc_queue	all.q
+cluster_jobs_fp	/opt/software/QIIME/1.4.0--GCC-4.4.5/lib/python2.7/site-packages/qiime/scripts/start_parallel_jobs_torque.py
+torque_queue	main
+jobs_to_start	100
+cloud_environment	False
+qiime_scripts_dir	/opt/software/QIIME/1.7.0--GCC-4.4.5/bin
+denoiser_min_per_core	50
+working_dir	/mnt/home/qingpeng/Dropbox/Manuscript/khmer-recipes/101-alpha-diversity/
+python_exe_fp	python
+temp_dir	/tmp/
+blastall_fp	blastall
+seconds_to_sleep	60
+
+parameter file values:
+beta_diversity:metrics	bray_curtis
+parallel:jobs_to_start	100
+
+Input file md5 sums:
+all_sample.spectrum.IGS.biom: ba1e9a61a55ef19982895c63e56aa4e9
+all_sample_MAP.txt: 9e76256a0099d68b596b6f0ac3a2e4b0
+
+Executing commands.
+
+# Beta Diversity (bray_curtis) command 
+python /opt/software/QIIME/1.7.0--GCC-4.4.5/bin/beta_diversity.py -i all_sample.spectrum.IGS.biom -o bdiv_jk1000 --metrics bray_curtis
+
+Stdout:
+
+Stderr:
+
+# Rarefaction command 
+python /opt/software/QIIME/1.7.0--GCC-4.4.5/bin/multiple_rarefactions_even_depth.py -i all_sample.spectrum.IGS.biom -d 1000 -o bdiv_jk1000/rarefaction/ 
+
+Stdout:
+
+Stderr:
+
+# UPGMA on full distance matrix: bray_curtis command 
+python /opt/software/QIIME/1.7.0--GCC-4.4.5/bin/upgma_cluster.py -i bdiv_jk1000/bray_curtis_all_sample.spectrum.IGS.txt -o bdiv_jk1000/bray_curtis//all_sample.spectrum.IGS_upgma.tre 
+
+Stdout:
+
+Stderr:
+
+# Beta diversity on rarefied OTU tables (bray_curtis) command 
+python /opt/software/QIIME/1.7.0--GCC-4.4.5/bin/beta_diversity.py -i bdiv_jk1000/rarefaction/ -o bdiv_jk1000/bray_curtis//rare_dm/  -m bray_curtis 
+
+Stdout:
+
+Stderr:
+
+# UPGMA on rarefied distance matrix (bray_curtis) command 
+python /opt/software/QIIME/1.7.0--GCC-4.4.5/bin/upgma_cluster.py -i bdiv_jk1000/bray_curtis//rare_dm/ -o bdiv_jk1000/bray_curtis//rare_upgma/ 
+
+Stdout:
+
+Stderr:
+
+# consensus on rarefied distance matrices (bray_curtis) command 
+python /opt/software/QIIME/1.7.0--GCC-4.4.5/bin/consensus_tree.py -i bdiv_jk1000/bray_curtis//rare_upgma/ -o bdiv_jk1000/bray_curtis//rare_upgma_consensus.tre 
+
+Stdout:
+
+Stderr:
+
+# Tree compare (bray_curtis) command 
+python /opt/software/QIIME/1.7.0--GCC-4.4.5/bin/tree_compare.py -s bdiv_jk1000/bray_curtis//rare_upgma/ -m bdiv_jk1000/bray_curtis//rare_upgma_consensus.tre -o bdiv_jk1000/bray_curtis//upgma_cmp/ 
+
+Stdout:
+
+Stderr:
+
+# Principal coordinates (bray_curtis) command 
+python /opt/software/QIIME/1.7.0--GCC-4.4.5/bin/principal_coordinates.py -i bdiv_jk1000/bray_curtis//rare_dm/ -o bdiv_jk1000/bray_curtis//pcoa/ 
+
+Stdout:
+
+Stderr:
+
+# emperor plots (bray_curtis) command 
+make_emperor.py -i bdiv_jk1000/bray_curtis//pcoa/ -o bdiv_jk1000/bray_curtis//emperor_pcoa_plots/ -m all_sample_MAP.txt 
+
+Stdout:
+
+Stderr:
+
+
+Logging stopped at 16:59:35 on 16 Oct 2014
