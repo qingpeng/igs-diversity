@@ -74,10 +74,12 @@ def main():
     for round in range(len(all_ht)): # deal with the ht in memory
         htfiles = all_ht[round]
         hts = []
+        print hts
         for htfile in htfiles:
             print 'loading counting hash from', htfile
             ht = khmer.load_counting_hash(htfile)
             K = ht.ksize()
+            print K
             hts.append(ht)
             
         for n, input_filename in enumerate(filenames):
