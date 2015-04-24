@@ -1,5 +1,7 @@
 #! /usr/bin/env python
 """
+
+to be combined @@@
 Get the list of IGSs for different samples seperately for alpha diversity analysis.
 
 % scripts/seperate_IGS_for_alpha.py <spectrum file> <MAP file>
