@@ -98,7 +98,9 @@ of memory available to use.
    ls sample_*.fa | awk '{ ORS=" "; print; }' >>config.txt
    printf "\n" >>config.txt
    printf "30000000" >>config.txt
- 
+### new version, need to add read length and kmer size also, to transform the coverage
+!!
+
 Let's run the script:
 
 ::
